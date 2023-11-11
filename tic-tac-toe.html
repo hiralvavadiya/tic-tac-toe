@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Tic Tac Toe Game</title>
+	<style type="text/css">
+		body{
+			height: 120vh;
+			background-image: linear-gradient(#FF5F6D,#FFC371);
+		}
+		.tic{
+			margin-top: 20px;
+			justify-content: center;
+			display: grid;
+			grid-template-columns: repeat(3,200px);
+			grid-template-rows: repeat(3,200px);
+			gap: 10px;
+		}
+		input[type='button']{
+			font-size: 90px;
+			font-family: monospace;
+			font-weight: lighter;
+			background-color: #b5e7a0 ;
+			border-radius: 20px;
+			color: white;
+			box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+		}
+		input[type='button']:hover{
+			box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+		}
+		#reset{
+			margin-top: 30px;
+			font-family: monospace;
+			font-size: 60px;
+			color: floralwhite;
+			background-color: #82b74b;
+			border-radius: 20px;
+			padding: 10px;
+		}
+		h1{
+			font-size: 30px;
+			color: whitesmoke;
+			font-family: monospace;
+			font-weight: lighter;
+		}
+		.footer{
+			display: flex;
+			justify-content: space-around;
+		}
+	</style>
+</head>
+<body>
+	<div class="line">
+
+		<div class="footer">
+			<h1 id="result"></h1>
+		</div>
+
+		<div class="tic">
+			<input type="button" name="" id="btn1" onclick="tictac(1)">
+			<input type="button" name="" id="btn2" onclick="tictac(2)">
+			<input type="button" name="" id="btn3" onclick="tictac(3)">
+			<input type="button" name="" id="btn4" onclick="tictac(4)">
+			<input type="button" name="" id="btn5" onclick="tictac(5)">
+			<input type="button" name="" id="btn6" onclick="tictac(6)">
+			<input type="button" name="" id="btn7" onclick="tictac(7)">
+			<input type="button" name="" id="btn8" onclick="tictac(8)">
+			<input type="button" name="" id="btn9" onclick="tictac(9)">
+		</div>
+
+		<div class="footer"> 
+			<!-- <img src="" id="myImage" height="100px" width="100px"> -->
+			<input type="reset" name="" id="reset" onclick="reset()">
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
+		cnt=0;
+		function tictac(no) {
+			var a= document.getElementById('btn'+no).value;
+			if(a == '') {
+				if(cnt%2 == 1){
+					document.getElementById('btn'+no).value='X';
+					// document.getElementById('btn'+no).disabled='true';
+				}
+				else{
+					document.getElementById('btn'+no).value='O';
+					// document.getElementById('btn'+no).disabled='true';
+				}
+				cnt++;
+			}
+			win();
+		}
+
+		function win() {
+			var b1=document.getElementById('btn1').value;
+			var b2=document.getElementById('btn2').value;
+			var b3=document.getElementById('btn3').value;
+			var b4=document.getElementById('btn4').value;
+			var b5=document.getElementById('btn5').value;
+			var b6=document.getElementById('btn6').value;
+			var b7=document.getElementById('btn7').value;
+			var b8=document.getElementById('btn8').value;
+			var b9=document.getElementById('btn9').value;
+
+			if(b1=='X' && b2=='X' && b3=='X' ||
+				b4=='X' && b5=='X' && b6=='X' ||
+				b7=='X' && b8=='X' && b9=='X' ||
+				b1=='X' && b5=='X' && b9=='X' ||
+				b3=='X' && b5=='X' && b7=='X' ||
+				b1=='X' && b4=='X' && b7=='X' ||
+				b2=='X' && b5=='X' && b8=='X' ||
+				b3=='X' && b6=='X' && b9=='X' )
+			{
+				document.getElementById('result').innerText='X is Winner ..!!🎉🎉🎉';
+				// Image1();
+			}
+			else if(b1=='O' && b2=='O' && b3=='O' ||
+				b4=='O' && b5=='O' && b6=='O' ||
+				b7=='O' && b8=='O' && b9=='O' ||
+				b1=='O' && b5=='O' && b9=='O' ||
+				b3=='O' && b5=='O' && b7=='O' ||
+				b1=='O' && b4=='O' && b7=='O' ||
+				b2=='O' && b5=='O' && b8=='O' ||
+				b3=='O' && b6=='O' && b9=='O' )
+			{
+				document.getElementById('result').innerText='O is Winner ..!! 🎉🎉🎉';
+			}
+			else if(b1!='' && b2!='' && b3!='' && b4!='' && b5!='' && b6!='' && b7!='' && b8!='' && b9!='')
+			{
+				document.getElementById('result').innerText='Game Over..!!';
+			}
+		}
+
+		function reset(){
+			var b1=document.getElementById('btn1').value='';
+			var b2=document.getElementById('btn2').value='';
+			var b3=document.getElementById('btn3').value='';
+			var b4=document.getElementById('btn4').value='';
+			var b5=document.getElementById('btn5').value='';
+			var b6=document.getElementById('btn6').value='';
+			var b7=document.getElementById('btn7').value='';
+			var b8=document.getElementById('btn8').value='';
+			var b9=document.getElementById('btn9').value='';
+			document.getElementById('result').innerText='';
+
+		}
+
+		// function Image1(){
+		// 	document.getElementById('myImage').src="win.gif";
+		// }
+
+
+
+	</script>
+</body>
+</html>
